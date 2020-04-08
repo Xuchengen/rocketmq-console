@@ -5,12 +5,12 @@ sudo: false
 install: false
 
 jdk:
-  - oraclejdk8
+  - openjdk8
 
 notifications:
   email: false
 
 cache:
   directories:
-    - '$HOME/.m2'
+    - '$HOME/.m2/repository'
 
