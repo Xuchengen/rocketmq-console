@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- 定义字符集属性 -->
+    <property name="CHARSET" value="UTF-8"/>
+
+	<!-- 定义文件路径属性（使用spring boot已经定义的环境变量） -->
+	<property name="FILE_PATH" value="${LOG_PATH}"/>
+
+    <!-- 定义文件日志格式属性 -->
+    <property name="FILE_PATTERN"
+              value="[%d{yyyy-MM-dd HH:mm:ss.SSS}] %5p %m%n"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder charset="UTF-8">
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] %5p %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${FILE_PATH}/rocketmq-console.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${FILE_PATH}/%d{yyyy-MM-dd}/rocketmq-console.%i.log</fileNamePattern>
+            <!-- 按时间回滚的同时，按文件大小来回滚 -->
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>100MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <!-- 保留最近30天日志 -->
+            <maxHistory>60</maxHistory>
+            <!-- 日志文件上限，达到该值会删除旧日志 -->
+            <totalSizeCap>5GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder charset="UTF-8">
+            <pattern>${FILE_PATTERN}</pattern>
+            <charset>${CHARSET}</charset>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE"/>
+    </root>
+
+</configuration> 
