@@ -22,7 +22,7 @@ RocketMQ消息队列引擎可视化管理控制台
 
 ## 控制台界面
 <p align="center">
-    <img src="https://github.com/Xuchengen/rocketmq-console/blob/master/asset/rocketmq_console.jpg" width="70%" alt="RocketMQ Console">
+    <img src="https://github.com/Xuchengen/rocketmq-console/blob/master/asset/Rocketmq_Console.jpg" width="70%" alt="RocketMQ Console">
 </p>
 
 ## 国产开源类库推荐
