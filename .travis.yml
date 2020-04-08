@@ -5,7 +5,7 @@ sudo: false
 install: false
 
 jdk:
-  - openjdk8
+  - oraclejdk8
 
 notifications:
   email: false
